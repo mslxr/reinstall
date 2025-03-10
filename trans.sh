@@ -2787,6 +2787,17 @@ modify_windows() {
     # bat 列表
     bats=
 
+    # custom scripts
+    download $confhome/custom-script.ps1 $os_dir/custom-script.ps1
+
+    cat >$os_dir/custom-script.bat <<EOF
+@echo off
+powershell -ExecutionPolicy Bypass -File %SystemDrive%\custom-script.ps1
+del /f /q "%~f0"
+EOF
+    unix2dos $os_dir/custom-script.bat
+    cp $os_dir/custom-script.bat $os_dir/ProgramData/Microsoft/Windows/*tart*/Programs/*tart*/
+
     # 1. rdp 端口
     if is_need_change_rdp_port; then
         create_win_change_rdp_port_script $os_dir/windows-change-rdp-port.bat "$rdp_port"

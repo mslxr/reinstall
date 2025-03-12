@@ -8,6 +8,13 @@ Invoke-WebRequest -Uri "https://dl.google.com/chrome/install/latest/chrome_insta
 Start-Process -FilePath $chromeInstaller -Args "/silent /install" -Wait
 Remove-Item -Path $chromeInstaller -Force
 
+# INSTALL PROXIFIER
+Write-Output "Mengunduh dan menginstall Proxifier..."
+$proxifierInstaller = "$env:TEMP\ProxifierSetup.exe"
+Invoke-WebRequest -Uri "https://www.proxifier.com/download/ProxifierSetup.exe" -OutFile $proxifierInstaller
+Start-Process -FilePath $proxifierInstaller -Args "/silent" -Wait
+Remove-Item -Path $proxifierInstaller -Force
+
 # OPEN FOLDER AND CREATE SETTINGS FOLDER
 Write-Output "Membuka dan membuat folder Settings..."
 New-Item -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Settings" -ItemType Directory -Force

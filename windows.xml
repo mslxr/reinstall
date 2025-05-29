@@ -147,18 +147,35 @@
 			<UserAccounts>
 				<AdministratorPassword>
 					<Value>%administrator_password%</Value>
-					<PlainText>false</PlainText>
+					<PlainText>true</PlainText>
 				</AdministratorPassword>
 			</UserAccounts>
 			<AutoLogon>
 				<Username>Administrator</Username>
 				<Password>
 					<Value>%administrator_password%</Value>
-					<PlainText>false</PlainText>
+					<PlainText>true</PlainText>
 				</Password>
 				<Enabled>true</Enabled>
 				<LogonCount>1</LogonCount>
 			</AutoLogon>
+            <FirstLogonCommands>
+                <SynchronousCommand>
+                    <CommandLine>reg add "HKCU\Software\Microsoft\ServerManager" /v DoNotOpenServerManagerAtLogon /t REG_DWORD /d 1 /f</CommandLine>
+                    <Order>1</Order>
+                    <Description>Disable Server Manager at Logon</Description>
+                </SynchronousCommand>
+                <SynchronousCommand>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -File C:\custom-script.ps1</CommandLine>
+                    <Order>2</Order>
+                    <Description>Run Custom Script</Description>
+                </SynchronousCommand>
+                <SynchronousCommand>
+                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('Demi keamanan, harap segera ganti password RDP Anda setelah login.', 'PERINGATAN KEAMANAN RDP', 'OK', 'Warning')" </CommandLine>
+                    <Order>3</Order>
+                    <Description>Run Inline PowerShell Alert</Description>
+                </SynchronousCommand>
+            </FirstLogonCommands>
 			<OOBE>
 				<HideEULAPage>true</HideEULAPage>
 				<ProtectYourPC>3</ProtectYourPC>

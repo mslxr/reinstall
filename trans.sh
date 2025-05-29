@@ -5802,11 +5802,12 @@ install_windows() {
     locale=$(get_selected_image_prop 'Default Language')
     use_default_rdp_port=$(is_need_change_rdp_port && echo false || echo true)
     password_base64=$(get_password_windows_administrator_base64)
+    password_plaintext=$(get_password_plaintext)
     sed -i \
         -e "s|%arch%|$arch|" \
         -e "s|%image_name%|$image_name|" \
         -e "s|%locale%|$locale|" \
-        -e "s|%administrator_password%|$password_base64|" \
+        -e "s|%administrator_password%|$password_plaintext|" \
         -e "s|%use_default_rdp_port%|$use_default_rdp_port|" \
         /tmp/autounattend.xml
 

@@ -170,11 +170,6 @@
                     <Order>2</Order>
                     <Description>Run Custom Script</Description>
                 </SynchronousCommand>
-                <SynchronousCommand>
-                    <CommandLine>powershell.exe -ExecutionPolicy Bypass -Command "Add-Type -AssemblyName PresentationFramework; [System.Windows.MessageBox]::Show('Demi keamanan, harap segera ganti password RDP Anda setelah login.', 'PERINGATAN KEAMANAN RDP', 'OK', 'Warning')" </CommandLine>
-                    <Order>3</Order>
-                    <Description>Run Inline PowerShell Alert</Description>
-                </SynchronousCommand>
             </FirstLogonCommands>
 			<OOBE>
 				<HideEULAPage>true</HideEULAPage>

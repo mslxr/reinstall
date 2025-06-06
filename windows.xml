@@ -147,18 +147,9 @@
 			<UserAccounts>
 				<AdministratorPassword>
 					<Value>%administrator_password%</Value>
-					<PlainText>true</PlainText>
+					<PlainText>false</PlainText>
 				</AdministratorPassword>
 			</UserAccounts>
-			<AutoLogon>
-				<Username>Administrator</Username>
-				<Password>
-					<Value>%administrator_password%</Value>
-					<PlainText>true</PlainText>
-				</Password>
-				<Enabled>true</Enabled>
-				<LogonCount>1</LogonCount>
-			</AutoLogon>
             <FirstLogonCommands>
                 <SynchronousCommand>
                     <CommandLine>reg add "HKCU\Software\Microsoft\ServerManager" /v DoNotOpenServerManagerAtLogon /t REG_DWORD /d 1 /f</CommandLine>

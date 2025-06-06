@@ -153,7 +153,7 @@
 			<AutoLogon>
 				<Username>Administrator</Username>
 				<Password>
-					<Value>administrator_password_plaintext</Value>
+					<Value>%administrator_password_plaintext%</Value>
 					<PlainText>true</PlainText>
 				</Password>
 				<Enabled>true</Enabled>

@@ -545,6 +545,10 @@ get_password_windows_administrator_base64() {
     get_config password-windows-administrator-base64
 }
 
+get_password_windows_administrator_plaintext() {
+    get_password_windows_administrator_base64 | base64 -d
+}
+
 get_password_plaintext() {
     get_config password-plaintext
 }
@@ -5802,7 +5806,7 @@ install_windows() {
     locale=$(get_selected_image_prop 'Default Language')
     use_default_rdp_port=$(is_need_change_rdp_port && echo false || echo true)
     password_base64=$(get_password_windows_administrator_base64)
-    password_plaintext=$(get_password_plaintext)
+    password_plaintext=$(get_password_windows_administrator_plaintext)
     sed -i \
         -e "s|%arch%|$arch|" \
         -e "s|%image_name%|$image_name|" \

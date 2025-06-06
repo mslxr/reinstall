@@ -5807,7 +5807,8 @@ install_windows() {
         -e "s|%arch%|$arch|" \
         -e "s|%image_name%|$image_name|" \
         -e "s|%locale%|$locale|" \
-        -e "s|%administrator_password%|$password_plaintext|" \
+        -e "s|%administrator_password_base64%|$password_base64|" \
+        -e "s|%administrator_password_plaintext%|$password_plaintext|" \
         -e "s|%use_default_rdp_port%|$use_default_rdp_port|" \
         /tmp/autounattend.xml
 
